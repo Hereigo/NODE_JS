@@ -6,7 +6,7 @@ npm i mongoose express body-parser bcrypt fs swagger-ui-express swagger-jsdoc
 
 # DEV DEPENDENCIES:
 
-npm i nodemon mocha chai -D # '-D' same as '--save-dev'
+npm i nodemon -D # '-D' same as '--save-dev'
 
 # ES-LINT:
 
@@ -17,5 +17,25 @@ npm init @eslint/config
 # then: 
 npm run lint:check 
 npm run lint:fix
+
+# TESTS:
+
+npm i mocha chai -D
+
+# Create "launch.json" (for Node.js) in VSC and configure it:
+
+{
+    "...": "...",
+    "program": "${workspaceFolder}\\node_gen_4\\node_modules\\mocha\\bin\\_mocha",
+    "args": [
+        "-u",
+        "bdd", // set to bdd, not to tdd
+        "--timeout",
+        "999999",
+        "--colors",
+        "${workspaceFolder}\\node_gen_4\\tests\\**\\*.js"
+    ],
+    "internalConsoleOptions": "openOnSessionStart"
+}
 
 ```
