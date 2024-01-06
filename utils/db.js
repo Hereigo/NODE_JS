@@ -1,6 +1,6 @@
 ﻿import { connect } from 'mongoose';
 
-import { URI } from '../config/db.js';
+import { URI } from '../config/secrets.js';
 
 connect(URI).then(() => {
     console.log('Successfully connected to DB.');
