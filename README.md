@@ -18,24 +18,39 @@ npm init @eslint/config
 npm run lint:check 
 npm run lint:fix
 
+```
 # TESTS:
 
 npm i mocha chai -D
 
-# Create "launch.json" (for Node.js) in VSC and configure it:
+### Create "launch.json" (for Node.js) in VSC Debug-menu and than configure it.
 
-{
-    "...": "...",
-    "program": "${workspaceFolder}\\node_gen_4\\node_modules\\mocha\\bin\\_mocha",
-    "args": [
-        "-u",
-        "bdd", // set to bdd, not to tdd
-        "--timeout",
-        "999999",
-        "--colors",
-        "${workspaceFolder}\\node_gen_4\\tests\\**\\*.js"
-    ],
-    "internalConsoleOptions": "openOnSessionStart"
-}
-
+```json
+"configurations": [
+    {
+        "command": "npm start",
+        "name": "Run npm start",
+        "request": "launch",
+        "type": "node-terminal"
+    },
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "Mocha Tests",
+        "skipFiles": [
+            "<node_internals>/**"
+        ],
+        "program": "${workspaceFolder}\\server.js",
+        "args": [
+            "-u",
+            "bdd", // set to bdd, not to tdd
+            "--timeout",
+            "999999",
+            "--colors",
+            "${workspaceFolder}\\node_gen_4\\tests\\**\\*.js"
+        ],
+        "internalConsoleOptions": "openOnSessionStart"
+    }
+]
 ```
+...
