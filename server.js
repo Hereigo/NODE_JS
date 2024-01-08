@@ -2,13 +2,13 @@ import fs from 'fs';
 import express from 'express';
 import bodyParser from 'body-parser';
 import SwaggerUI from 'swagger-ui-express';
-import './utils/db.js';
+import './config/db_connect.js';
 // import cors from 'cors';
 
 // Routes:
 import authRouter from './routes/authRoutes.js';
 import taskRouter from './routes/taskRoutes.js';
-import swaggerSpecifica from './utils/swagger.js';
+import swaggerSpecifica from './config/swagger.js';
 
 const app = express();
 const port = 3000;
