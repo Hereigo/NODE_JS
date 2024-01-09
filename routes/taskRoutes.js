@@ -5,9 +5,11 @@ import checkAdmin from '../middlewares/checkAdmin.js';
 
 const router = express.Router();
 
-// Order is IMPORTANT!
+// Routes Order is IMPORTANT!!!
 
 router.use(checkAuth);
+
+// OpenAPI described by YAML (spaces matters!)
 
 /**
  * @openapi
