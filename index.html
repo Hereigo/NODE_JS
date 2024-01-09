@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <style>
@@ -23,7 +21,7 @@
     <h2>Hello!</h2>
 
     <div class="box">
-        <form action="/api/auth/register" method="POST">
+        <form id="formRegister">
             <table>
                 <tr>
                     <td>userName:</td>
@@ -39,14 +37,14 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input type="button" id="submitButton" value="Register" /></td>
+                    <td><input type="button" id="submitRegister" value="Register" /></td>
                 </tr>
             </table>
         </form>
     </div>
 
     <div class="box">
-        <form action="/api/auth/login" method="POST" enctype="multipart/form-data">
+        <form id="formLogin">
             <table>
                 <tr>
                     <td>userName:</td>
@@ -62,39 +60,47 @@
                 </tr>
                 <tr>
                     <td></td>
-                    <td><button type="submit">Login</button></td>
+                    <td><input type="button" id="submitLogin" value="Login" /></td>
                 </tr>
             </table>
         </form>
     </div>
 
     <script>
-
         $(document).ready(function () {
 
-            $('#submitButton').on('click', function () {
-                const usr = $('#userName').val();
-                const mail = $('#email').val();
-                const psw = $('#password').val();
-                const base64 = btoa(`${mail}:${psw}`);
+            $('#submitRegister').on('click', function () {
+                sendAjax('/api/auth/register', 'POST',
+                    $('#formRegister').find('#email').val(),
+                    $('#formRegister').find('#password').val(),
+                    $('#formRegister').find('#userName').val());
+            });
+
+            $('#submitLogin').on('click', function () {
+                sendAjax('/api/auth/login', 'POST',
+                    $('#formLogin').find('#email').val(),
+                    $('#formLogin').find('#password').val(),
+                    $('#formLogin').find('#userName').val());
+            });
+
+            function sendAjax(reqPath, reqType, email, psw, usr) {
+                const base64 = btoa(`${email}:${psw}`);
                 $.ajax({
-                    url: "http://localhost:3000/api/auth/register",
-                    type: 'POST',
-                    data: JSON.stringify(
-                        {
-                            userName: usr,
-                            email: mail,
-                            password: psw
-                        }
-                    ),
+                    url: 'http://localhost:3000' + reqPath,
+                    type: reqType,
+                    data: JSON.stringify({
+                        email: email,
+                        password: psw,
+                        userName: usr,
+                    }),
                     dataType: "json",
                     contentType: 'application/json',
                     headers: {
                         "Authorization": "Bearer " + base64
                     },
                     async: false
-                })
-            });
+                });
+            }
 
         });
     </script>

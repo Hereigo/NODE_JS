@@ -6,6 +6,12 @@ export const register = async (req, res) => {
         // Request body destructuring:
         const { userName, email, password: psw, role } = req.body;
 
+        const userExists = await User.findOne({ email });
+
+        if (userExists) {
+            return res.status(400).json({ message: 'User is already exists.' });
+        }
+
         const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(psw, salt);
         const user = await User.create({
