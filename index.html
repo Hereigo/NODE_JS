@@ -14,6 +14,11 @@
             padding: 1rem;
             margin: 1rem;
         }
+
+        input {
+            max-width: 100%;
+            width: 100%;
+        }
     </style>
 </head>
 
@@ -61,6 +66,28 @@
                 <tr>
                     <td></td>
                     <td><input type="button" id="submitLogin" value="Login" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="box">
+        <form id="formFiles" action="/uploads/files" method="POST" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>
+                        <input type="file" id="files" name="files" multiple />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <hr />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" id="uploadButton" />
+                    </td>
                 </tr>
             </table>
         </form>

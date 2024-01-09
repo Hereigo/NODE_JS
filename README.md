@@ -1,14 +1,10 @@
 ```bash
 
-npm init -y
-
-npm i mongoose express body-parser bcrypt fs swagger-ui-express swagger-jsdoc
-
-# DEV DEPENDENCIES:
+# ======== DEV DEPENDENCIES: ========
 
 npm i nodemon -D # '-D' same as '--save-dev'
 
-# =========== ES-LINT: ===========
+# ============= ES-LINT: =============
 
 npm init @eslint/config
 # see modifications in: package.json
@@ -18,15 +14,12 @@ npm init @eslint/config
 npm run lint:check 
 npm run lint:fix
 
-```
-
-# ============= TESTS: =============
+# ============== TESTS: ==============
 
 npm i mocha chai -D
 
-### Create "launch.json" (for Node.js) in VSC Debug-menu and than configure it.
+# Create "launch.json" (for Node.js) in VSC Debug-menu and than configure it.
 
-```json
 "configurations": [
     {
         "command": "npm start",

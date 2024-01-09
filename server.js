@@ -8,6 +8,7 @@ import cors from 'cors';
 // Routes:
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 import swaggerSpecifica from './config/swagger.js';
 
 const app = express();
@@ -17,8 +18,6 @@ const port = 3000;
 
 app.use(bodyParser.json());
 
-// TODO:
-// Move this into Routes:
 app.get('/', (req, res) => {
     fs.readFile('index.html', (err, fileData) => {
         res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -35,7 +34,7 @@ app.use('/api', taskRoutes);
 // To process STATIC files by route '/uploads' for path 'uploads':
 app.use('/uploads', express.static('uploads'));
 
-/////////////////////////////////////////////// app.use('/uploads', filesRouter); 
+app.use('/uploads', uploadRoutes);
 
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
