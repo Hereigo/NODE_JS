@@ -4,5 +4,6 @@ import * as uploadController from '../controllers/uploadController.js';
 export const router = express.Router();
 
 router.post('/files', uploadController.files);
+router.post('/files2', uploadController.files2);
 
 export default router;

@@ -3,7 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import SwaggerUI from 'swagger-ui-express';
 import './config/db_connect.js';
-import cors from 'cors';
+// import cors from 'cors';
 
 // Routes:
 import authRoutes from './routes/authRoutes.js';
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/docs', SwaggerUI.serve, SwaggerUI.setup(swaggerSpecifica));
 
-app.use('/api', authRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api', taskRoutes);
 
 // To process STATIC files by route '/uploads' for path 'uploads':
