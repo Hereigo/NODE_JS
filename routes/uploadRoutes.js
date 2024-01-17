@@ -5,5 +5,6 @@ export const router = express.Router();
 
 router.post('/files', uploadController.files);
 router.post('/files2', uploadController.files2);
+router.post('/filesMulti', uploadController.filesMulti);
 
 export default router;

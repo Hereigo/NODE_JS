@@ -51,3 +51,26 @@ export const files2 = async (req, res) => {
     });
 };
 
+// --------- Multer DiskStorage (Multi-files) : -----------------------------
+
+const uploadDiscMulti =
+    multer({ storage, limits: { fileSize: _limitBytes } }).array(_formdataParam, _maxFiles);
+
+// app.post('/filesMulti', 
+export const filesMulti = async (req, res) => {
+    try {
+        uploadDiscMulti(req, res, function (err) {
+            if (err instanceof multer.MulterError) {
+                console.log('Multer Error: ', err);
+                return res.status(400).send('Bad request.');
+            } else if (err) {
+                console.log('Unknown Error: ', err);
+                return res.status(400).send('Bad request.');
+            }
+            return res.send(req.files);
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(400).send('Bad request.');
+    }
+};

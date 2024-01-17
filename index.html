@@ -72,9 +72,33 @@
     </div>
 
     <div class="box">
-        <div>Send files 2</div>
+        <div>Send files (link 2)</div>
         <br />
         <form id="formFiles" action="/uploads/files2" method="POST" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>
+                        <input type="file" id="files" name="files" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <hr />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" id="uploadButton" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div class="box">
+        <div>Send Multiple files</div>
+        <br />
+        <form id="formFiles" action="/uploads/filesMulti" method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>
