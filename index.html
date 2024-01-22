@@ -122,6 +122,25 @@
     <script>
         $(document).ready(function () {
 
+            $('#submitRegister').attr('disabled', 'disabled');
+
+            let emailInput = $('#formRegister').find('#email');
+
+            $(emailInput).on('keyup', function () {
+                if ($(emailInput).val().length > 5
+                    && emailIsValid($(emailInput).val())) {
+                    $('#submitRegister').removeAttr('disabled');
+                } else {
+                    $('#submitRegister').attr('disabled', 'disabled');
+                }
+            });
+
+            function emailIsValid(emailValue) {
+                let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                return emailRegex.test(emailValue);
+            }
+
+
             $('#submitRegister').on('click', function () {
                 sendAjax('/api/auth/register', 'POST',
                     $('#formRegister').find('#email').val(),
