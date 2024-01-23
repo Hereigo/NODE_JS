@@ -140,7 +140,6 @@
                 return emailRegex.test(emailValue);
             }
 
-
             $('#submitRegister').on('click', function () {
                 sendAjax('/api/auth/register', 'POST',
                     $('#formRegister').find('#email').val(),

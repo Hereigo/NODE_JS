@@ -36,11 +36,12 @@ console.log(mergedPerson);      // { name: 'Scorpio', age: 50, hobby: 'Toys' }
 
 // SEE ALL HIDDEN PROPERTIES WITH SUB-PROPERTIES:
 
-const util = require('util');
+// const util = require('util');
+import { inspect } from 'util'; // from Node.js
 let x = {};
-console.log(util.inspect(Object.getPrototypeOf(x), { showHidden: true, depth: null }));
+console.log(inspect(Object.getPrototypeOf(x), { showHidden: true, depth: null }));
 // the same:
-console.log(util.inspect(x.__proto__, { showHidden: true, depth: null }));
+console.log(inspect(x.__proto__, { showHidden: true, depth: null }));
 
 let arr = [];
 console.log(arr.__proto__ === Array.prototype);             // true
