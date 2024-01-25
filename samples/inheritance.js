@@ -44,13 +44,18 @@ console.log(inspect(Object.getPrototypeOf(x), { showHidden: true, depth: null })
 console.log(inspect(x.__proto__, { showHidden: true, depth: null }));
 
 let arr = [];
-console.log(arr.__proto__ === Array.prototype);             // true
-console.log(arr.__proto__.__proto__ === Object.prototype);  // true
-console.log(Array.prototype.isPrototypeOf(arr));            // true
-console.log(Object.prototype.isPrototypeOf(Array));         // true
-console.log(arr instanceof Array);                          // true
+console.log(arr.__proto__ === Array.prototype);                           // true
+console.log(arr.__proto__.__proto__ === Object.prototype);                // true
 
-// ================
+//console.log(Array.prototype.isPrototypeOf(arr)); // eslint not recomend // true
+console.log(Object.prototype.isPrototypeOf.call(Array.prototype, arr));   // true
+
+//console.log(Object.prototype.isPrototypeOf(Array));//eslint not recomend// true
+console.log(Object.prototype.isPrototypeOf.call(Object.prototype, Array));// true
+
+console.log(arr instanceof Array);                                        // true
+
+// ================================================
 
 function User(name) {
     this.name = name;
