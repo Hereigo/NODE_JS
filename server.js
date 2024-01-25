@@ -28,6 +28,7 @@ app.get('/', (req, res) => {
 app.use('/api/docs', SwaggerUI.serve, SwaggerUI.setup(swaggerSpecifica));
 
 app.use('/api/auth', authRoutes);
+
 app.use('/api', taskRoutes);
 
 // To process STATIC files by route '/uploads' for path 'uploads':
