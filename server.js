@@ -3,8 +3,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import SwaggerUI from 'swagger-ui-express';
 import './config/db_connect.js';
-// import cors from 'cors';
-
 // Routes:
 import authRoutes from './routes/authRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
@@ -14,6 +12,7 @@ import swaggerSpecifica from './config/swagger.js';
 const app = express();
 const port = 3000;
 
+// import cors from 'cors';
 // app.use(cors({ origin: 'http://127.0.0.1:5500' }));
 
 app.use(bodyParser.json());
@@ -37,5 +36,5 @@ app.use('/uploads', express.static('uploads'));
 app.use('/uploads', uploadRoutes);
 
 app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
+    console.log(`See API docs at http://localhost:${port}/api/docs`);
 });
