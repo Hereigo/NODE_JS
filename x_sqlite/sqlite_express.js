@@ -1,9 +1,10 @@
-import bodyParser from 'body-parser';
-import express from 'express';
+const bodyParser = require('body-parser');
+const express = require('express');
+
 const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('sqlite_tasks.db');
 
 const app = express();
-const db = new sqlite3.Database('sqlite_tasks.db');
 const port = 3000;
 
 app.use(bodyParser.json());
